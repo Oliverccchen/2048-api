@@ -1,0 +1,7 @@
+2048使用介绍：
+modeltrain.py文件是训练模型文件
+mydata.py文件是获取获取处理训练数据的文件
+agents.py文件中加入我的agent
+game.py文件中对棋盘进行了处理
+models10.h5中存放了agent的权重参数
+evaluate.py可以对agent性能进行评估
