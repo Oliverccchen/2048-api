@@ -1,4 +1,7 @@
 import numpy as np
+from keras.models import load_model
+
+model = load_model('/home/olivia/PycharmProjects/2048/game2048/data/models10.h5')
 
 
 class Agent:
@@ -45,4 +48,19 @@ class ExpectiMaxAgent(Agent):
 
     def step(self):
         direction = self.search_func(self.game.board)
+        return direction
+
+
+class MyAgent(Agent):
+
+    def _init__(self, game, display=None):
+        super().__init__(game, display)
+        self.model = model
+        self.board = self.game.board
+
+    def predict(self):
+        return model.predict_on_batch(np.log2(self.game.dealboard)[np.newaxis, :, :, np.newaxis])
+
+    def step(self):
+        direction = self.predict().argmax()
         return direction
