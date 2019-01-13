@@ -63,6 +63,12 @@ class Game:
         i.e. board[1,3]=2, will not raise error.'''
         return self.__board.copy()
 
+    @property
+    def dealboard(self):
+        ret = self.board
+        ret[ret == 0] = 1
+        return ret
+
     @board.setter
     def board(self, x):
         if self.enable_rewrite_board:
